@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="10; url=../park/index.html">
+
+  <title>KWANGWOON PARK</title>
+  <link rel = "stylesheet" type ="text/css" href="style1.css"/>  
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="ferris-wheel">
+        <div class="wheel-wrap">
+            <div class="wheels">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="buckets">
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+                <div><span></span></div>
+            </div>
+        </div>
+        <div class="stand"><span></span></div>
+    </div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js'></script>
+  <script>
+    gsap.to(".buckets div span",{backgroundColor:"orange",stagger:1});
+
+    let apa = [];
+    let count =0;
+    let sum = 0;
+    window.addEventListener('devicemotion', function(event) {
+      a = event.acceleration.y;
+      
+      apa[count] = a;    
+      let last  = apa.length -1
+    
+      
+      sum += Math.abs(apa[count]);
+      console.log(sum);
+      if(count == 30){
+        window.removeEventListener("devicemotion",arguments.callee);
+        console.log("asdas")
+        sum = sum/23;
+        setduration(sum);
+        console.log(sum);
+      }
+      count++;
+    });
+
+    function setduration(a){
+      console.log(a);
+      if (a > 0 && a <3){
+        console.log("aaaaaaaaaaaaaaaaaa");
+        var objLink=document.createElement("link");
+        objLink.rel="stylesheet";
+        objLink.type="text/css";
+        objLink.href="style1.css";
+        document.getElementsByTagName("head")[0].appendChild(objLink);
+      }
+      else if(a > 3 && a <5){
+        console.log("bbbbbbbbbbbb");
+        var objLink=document.createElement("link");
+        objLink.rel="stylesheet";
+        objLink.type="text/css";
+        objLink.href="style2.css";
+        document.getElementsByTagName("head")[0].appendChild(objLink);
+      }
+      else if(a > 5 && a <10){
+        console.log("ccccccc");
+        var objLink=document.createElement("link");
+        objLink.rel="stylesheet";
+        objLink.type="text/css";
+        objLink.href="style3.css";
+        document.getElementsByTagName("head")[0].appendChild(objLink);
+      }
+      else if(a > 10){
+        console.log("dddddddd");
+        var objLink=document.createElement("link");
+        objLink.rel="stylesheet";
+        objLink.type="text/css";
+        objLink.href="style4.css";
+        document.getElementsByTagName("head")[0].appendChild(objLink);
+      }
+    }
+  </script>
+</body>
+</html>
